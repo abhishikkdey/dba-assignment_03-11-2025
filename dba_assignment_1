@@ -1,0 +1,10 @@
+Q1.  Create pfile from spfile to location '/home/oracle/init<sid.ora>'
+    SQL> show parameter spfile;
+
+    NAME				     TYPE	 VALUE
+------------------------------------ ----------- ------------------------------
+    spfile				     string	 /u01/app/oracle/product/19.0.0
+						 /dbhome_1/dbs/spfileprod1.ora
+    SQL> create pfile='/home/oracle/initprod1.ora'from spfile;
+
+    File created.
