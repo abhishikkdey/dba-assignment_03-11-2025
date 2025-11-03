@@ -8,3 +8,7 @@ Q1.  Create pfile from spfile to location '/home/oracle/init<sid.ora>'
     SQL> create pfile='/home/oracle/initprod1.ora'from spfile;
 
     File created.
+Q2.  Create password file with sys password as oracle1
+	cd /u01/app/oracle/product/19.0.0/dbhome_1/dbs
+	ll
+orapwd file=orapwad1
