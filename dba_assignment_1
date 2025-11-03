@@ -34,5 +34,40 @@ Q4.	How to check all parameters associated with database?
 Q5.	How to change specific parameters with Scope=both/spfile/memory?
 	sql> alter system set parameter name scope=spfile/memory/both;
 Q6. How to check which parameter files required DB bounce for the changes to get reflected?
+	SELECT name, value, issys_modifiable FROM v$parameter;
+	SQL> select name, issys_modifiable from v$parameter where issys_modifiable='IMMEDIATE';
 
+NAME										 ISSYS_MOD
+-------------------------------------------------------------------------------- ---------
+sessions									 IMMEDIATE
+timed_statistics								 IMMEDIATE
+timed_os_statistics								 IMMEDIATE
+resource_limit									 IMMEDIATE
+license_max_sessions								 IMMEDIATE
+license_sessions_warning							 IMMEDIATE
+long_module_action								 IMMEDIATE
+instance_abort_delay_time							 IMMEDIATE
+cpu_count									 IMMEDIATE
+cpu_min_count									 IMMEDIATE
+sga_min_size									 IMMEDIATE
+shared_pool_size								 IMMEDIATE
+large_pool_size 						
+Q7.	How to check which parameter files cannot be changed?
+select name, issys_modifiable from v$parameter where issys_modifiable=
+  2  'DEFERRED';
 
+NAME										 ISSYS_MOD
+-------------------------------------------------------------------------------- ---------
+backup_tape_io_slaves								 DEFERRED
+recyclebin									 DEFERRED
+session_cached_cursors								 DEFERRED
+private_temp_table_prefix							 DEFERRED
+audit_file_dest 								 DEFERRED
+object_cache_optimal_size							 DEFERRED
+object_cache_max_size_percent							 DEFERRED
+sort_area_size									 DEFERRED
+sort_area_retained_size 							 DEFERRED
+client_statistics_level 							 DEFERRED
+olap_page_pool_size								 DEFERRED
+
+11 rows selected.
