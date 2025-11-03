@@ -11,4 +11,28 @@ Q1.  Create pfile from spfile to location '/home/oracle/init<sid.ora>'
 Q2.  Create password file with sys password as oracle1
 	cd /u01/app/oracle/product/19.0.0/dbhome_1/dbs
 	ll
-orapwd file=orapwad1
+	[oracle@localhost dbs]$ orapwd file=oraad1
+
+	Enter password for SYS: 
+	[oracle@localhost dbs]$ 
+	[oracle@localhost dbs]$ ll
+Q3. Create parameterfile in different location /u01 & start the DB to up and running condition.
+	create pfile='/u02/initprod1.ora'from spfile;
+	File created.
+	SQL> startup pfile='/u02/initprod1.ora';
+  	ORACLE instance started.
+
+	Total System Global Area 1090518112 bytes
+	Fixed Size		    8895584 bytes
+	Variable Size		  738197504 bytes
+	Database Buffers	  335544320 bytes
+	Redo Buffers		    7880704 bytes
+	Database mounted.
+	Database opened.
+Q4.	How to check all parameters associated with database?
+	SQL> show parameter;
+Q5.	How to change specific parameters with Scope=both/spfile/memory?
+	sql> alter system set parameter name scope=spfile/memory/both;
+Q6. How to check which parameter files required DB bounce for the changes to get reflected?
+
+
